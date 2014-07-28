@@ -3,7 +3,7 @@
 
 @element countdown-timer
 @blurb A simple countdown timer for Polymer.
-@status beta
+@status defunct
 @homepage http://pcomans.github.io/countdown-timer
 -->
 <polymer-element name="countdown-timer" attributes="duration repeat">
@@ -36,8 +36,6 @@
       
       finish: function() {
         this.running = false;
-        
-        console.log('finished');
         
         this.fire('finished');
 
