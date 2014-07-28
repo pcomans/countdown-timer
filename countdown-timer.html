@@ -1,0 +1,76 @@
+<link rel="import" href="../polymer/polymer.html">
+<!-- A simple countdown timer for Polymer. ##### Example <countdown-timer></countdown-timer>
+
+@element countdown-timer
+@blurb A simple countdown timer for Polymer.
+@status beta
+@homepage http://pcomans.github.io/countdown-timer
+-->
+<polymer-element name="countdown-timer" attributes="duration repeat">
+  <template>
+    <content></content>
+  </template>
+  <script>
+    Polymer('countdown-timer', {
+      /**
+       * The `finished` event is fired when the timer finishes.
+       *
+       * @event finished
+       */
+
+      /**`
+       * The timer duration in ms
+       *
+       * @attribute duration
+       * @type int
+       */
+      duration: 1000,
+      
+      /**
+      * Whether to restart the timer after it finishes
+      *
+      * @attribute repeat
+      * @type bool
+      */
+      repeat: false,
+      
+      finish: function() {
+        this.running = false;
+        
+        console.log('finished');
+        
+        this.fire('finished');
+
+        if (this.repeat) {
+          this.start();
+        }
+      },
+      
+      /**
+      * Start the timer
+      *
+      * @method start
+      */
+      start: function() {
+        if (!this.running) {
+          this.startDate = Date.now();
+          this.running = true;
+          
+          this.job('timer', this.finish, this.duration);
+        }
+      },
+      
+      /**
+      * Get the elapsed time in ms
+      *
+      * @method elapsed
+      * @return {int} Returns elapsed time in ms
+      */
+      elapsed: function() {
+        if (this.running) {
+          return(Date.now() - this.startDate);
+        }
+      }
+    });
+  </script>
+</polymer-element>

@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <title>countdown-timer Demo</title>
+
+  <script src="../platform/platform.js"></script>
+  <link rel="import" href="countdown-timer.html">
+
+</head>
+<body unresolved>
+
+  <p>An `countdown-timer` can be used like this:</p>
+  <audio preload="auto" id="bell"> 
+    <source src="http://upload.wikimedia.org/wikipedia/commons/2/25/SingingBowl1.ogg"/>
+  </audio>
+
+  <countdown-timer id="timer" duration=10 repeat on-finished="document.getElementById('bell').play()"></countdown-timer>
+  
+  <button onclick="document.getElementById('timer').start()">Start the timer</button>
+
+</body>
+</html>
